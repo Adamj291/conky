@@ -1,0 +1,146 @@
+-- Copyright (C) 2007-2018 Zoltan Puskas
+-- License: BSD 3-clause
+
+conky.config = {
+    background = false,
+    font = 'Sans:size=6',
+    use_xft = true,
+    xftalpha = 0.9,
+    update_interval = 1.2,
+    total_run_times = 0,
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_transparent = true,
+    own_window_class = 'conky',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    double_buffer = true,
+    minimum_width = 400,
+    maximum_width = 400,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    default_color = 'CDE0E7',
+    default_shade_color = 'black',
+    default_outline_color = 'green',
+    gap_x = 20,
+    gap_y = 120,
+    alignment = 'tl',
+    no_buffers = true,
+    uppercase = false,
+    cpu_avg_samples = 2,
+    override_utf8_locale = false,
+    uppercase = true,
+}
+
+conky.text = [[
+${font Sans:style=Bold:size=8}${color cyan}System 
+${font Sans:style=Regular:size=6}${color cyan}
+${font Sans:style=Bold:size=6}Host Name:${alignr}${nodename}
+CPU:${alignr}${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-26}
+Uptime: $alignr$uptime
+#Sytem temp: ${alignr}${acpitemp}${iconv_start UTF-8 ISO_8859-1}°${iconv_stop}C
+#CPU temp: ${alignr}${hwmon 2 temp 1}${iconv_start UTF-8 ISO_8859-1}°${iconv_stop}C
+#Fan: ${alignr}${hwmon 1 fan 1} RPM
+#Processes: ${alignr}$processes ($running_processes running)
+Kernel: ${alignr}$kernel
+#Load: ${alignr}$loadavg
+GPU:${alignr}${exec nvidia-smi --query-gpu=gpu_name --format=csv,noheader,nounits}
+
+${font Sans:style=Bold:size=8}${color red}CPU Usage
+${font Sans:style=Regular:size=6}${color red}
+Core0@${freq 1} MHz ${alignr}${cpu cpu1}%
+${cpubar cpu1 16 }
+Core1@${freq 2} MHz ${alignr}${cpu cpu2}%
+${cpubar cpu2 16 }
+Core2@${freq 3} MHz ${alignr}${cpu cpu3}%
+${cpubar cpu3 16 }
+Core3@${freq 4} MHz ${alignr}${cpu cpu4}%
+${cpubar cpu4 16 }
+Core4@${freq 5} MHz ${alignr}${cpu cpu5}%
+${cpubar cpu5 16 }
+Core5@${freq 6} MHz ${alignr}${cpu cpu6}%
+${cpubar cpu6 16 }
+Core6@${freq 7} MHz ${alignr}${cpu cpu7}%
+${cpubar cpu7 16 }
+Core7@${freq 8} MHz ${alignr}${cpu cpu8}%
+${cpubar cpu8 16 }
+Core8@${freq 9} MHz ${alignr}${cpu cpu9}%
+${cpubar cpu9 16 }
+Core9@${freq 10} MHz ${alignr}${cpu cpu10}%
+${cpubar cpu10 16 }
+Core10@${freq 11} MHz ${alignr}${cpu cpu11}%
+${cpubar cpu11 16 }
+Core11@${freq 12} MHz ${alignr}${cpu cpu12}%
+${cpubar cpu12 16 }
+Core12@${freq 13} MHz ${alignr}${cpu cpu13}%
+${cpubar cpu13 16 }
+Core13@${freq 14} MHz ${alignr}${cpu cpu14}%
+${cpubar cpu14 16 }
+Core14@${freq 15} MHz ${alignr}${cpu cpu15}%
+${cpubar cpu15 16 }
+Core15@${freq 16} MHz ${alignr}${cpu cpu16}%
+${cpubar cpu16 16 }
+
+${font Sans:style=Bold:size=8}${color green}Memory Usage
+${font Sans:style=Regular:size=6}${color green}
+${color green}Ram ${alignr}$mem / $memmax ($memperc%)
+${membar 4}
+swap ${alignr}$swap / $swapmax ($swapperc%)
+${swapbar 4}
+
+${font Sans:style=Bold:size=8}${color orange}Processes 
+${font Sans:style=Bold:size=6}${color orange}Total Processes: ${alignr}$processes ($running_processes running)
+${font Sans:style=Regular:size=6}${color orange}
+${color orange}Highest CPU $alignr CPU% MEM%
+${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}
+${top name 4}$alignr${top cpu 4}${top mem 4}
+${top name 5}$alignr${top cpu 5}${top mem 5}
+${top name 6}$alignr${top cpu 6}${top mem 6}
+${top name 7}$alignr${top cpu 7}${top mem 7}
+${top name 8}$alignr${top cpu 8}${top mem 8}
+${top name 9}$alignr${top cpu 9}${top mem 9}
+${top name 10}$alignr${top cpu 10}${top mem 10}
+
+Highest MEM $alignr CPU% MEM%
+${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}
+${top name 4}$alignr${top cpu 4}${top mem 4}
+${top name 5}$alignr${top cpu 5}${top mem 5}
+${top name 6}$alignr${top cpu 6}${top mem 6}
+${top name 7}$alignr${top cpu 7}${top mem 7}
+${top name 8}$alignr${top cpu 8}${top mem 8}
+${top name 9}$alignr${top cpu 9}${top mem 9}
+${top name 10}$alignr${top cpu 10}${top mem 10}
+
+${font Sans:style=Bold:size=8}${color yellow}Storage 
+${font Sans:style=Regular:size=6}${color yellow}
+${color yellow}Root Drive: ${alignr}${fs_used /} / ${fs_size /}
+${fs_bar 4 /}
+Read: ${diskio_read} ${alignr}Write: ${diskio_write}
+${diskiograph_read /dev/sda 15,107} ${alignr}${diskiograph_write /dev/sda 15,107}
+TMP: ${alignr}${fs_used /tmp} / ${fs_size /tmp}
+${fs_bar 4 /tmp}
+
+${font Sans:style=Bold:size=8}${color purple}Network 
+${font Sans:style=Regular:size=6}${color purple}
+${color purple}enp34s0: ${addr enp34s0}
+Down ${downspeed enp34s0}/s ${alignr}Up ${upspeed enp34s0}/s
+${downspeedgraph enp34s0 15,107} ${alignr}${upspeedgraph enp34s0 15,107}
+Total ${totaldown enp34s0} ${alignr}Total ${totalup enp34s0}
+
+Wlan0: ${addr wlan0}
+Signal: ${alignr}${wireless_link_qual wlan0}%
+Down ${downspeed wlan0}/s ${alignr}Up ${upspeed wlan0}/s
+${downspeedgraph wlan0 15,107} ${alignr}${upspeedgraph wlan0 15,107}
+Total ${totaldown wlan0} ${alignr}Total ${totalup wlan0}
+
+${color white}${font Sans:style=Bold:size=18}${alignc}${time %A }
+${color white}${font Sans:style=Bold:size=20}${alignc}${time %d/%m/%Y }
+${font Sans:style=Bold:size=30}${alignc}${time %H:%M}
+
+]]
