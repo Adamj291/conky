@@ -1,0 +1,41 @@
+-- Copyright (C) 2007-2018 Zoltan Puskas
+-- License: BSD 3-clause
+
+conky.config = {
+    background = false,
+    font = 'Sans:size=6',
+    use_xft = true,
+    xftalpha = 0.9,
+    update_interval = 1.2,
+    total_run_times = 0,
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_transparent = true,
+    own_window_class = 'conky',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    double_buffer = true,
+    minimum_width = 800,
+    maximum_width = 800,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    default_color = 'CDE0E7',
+    default_shade_color = 'black',
+    default_outline_color = 'green',
+    gap_x = 600,
+    gap_y = 158,
+    alignment = 'tl',
+    no_buffers = true,
+    uppercase = false,
+    cpu_avg_samples = 2,
+    override_utf8_locale = false,
+    uppercase = true,
+}
+
+conky.text = [[
+
+${color yellow}${font Sans:style=Bold:size=12}${alignc}${time %A} - ${time %d/%m/%Y } - ${time %H:%M}
+
+]]

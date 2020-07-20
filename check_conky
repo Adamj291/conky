@@ -1,0 +1,48 @@
+-- Copyright (C) 2007-2018 Zoltan Puskas
+-- License: BSD 3-clause
+
+-- Add check.sh to sudoers file via visudo
+
+-- #includedir /etc/sudoers.d
+-- <username> ALL=(ALL) NOPASSWD:/home/<username>/.conky/check.sh
+
+conky.config = {
+    background = false,
+    font = 'Sans:size=6',
+    use_xft = true,
+    xftalpha = 0.9,
+    update_interval = 300,
+    total_run_times = 0,
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_transparent = true,
+    own_window_class = 'conky',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    double_buffer = true,
+    minimum_width = 500,
+    maximum_width = 500,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    default_color = 'CDE0E7',
+    default_shade_color = 'black',
+    default_outline_color = 'green',
+    gap_x = 1460,
+    gap_y = 120,
+    alignment = 'top_left',
+    no_buffers = true,
+    uppercase = false,
+    cpu_avg_samples = 2,
+    override_utf8_locale = false,
+}
+
+conky.text = [[
+${font Sans:style=Bold:size=8}${color red}UPDATES ${hr 2}$color
+${font Sans:style=Bold:size=6}${color red}MONITORED UPDATES:
+${font Sans:style=Bold:size=6}${color red}${exec bash check.sh}
+
+]]
+
+
