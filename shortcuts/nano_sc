@@ -1,0 +1,21 @@
+Files
+Ctrl-R = Read file
+Ctrl-O = Save file
+Ctrl-X = Close file
+
+Cut and Paste
+ALT-A = Start marking text
+CTRL-K = Cut marked text or line
+CTRL-U = Paste text
+
+Navigate File
+ALT-/ = End of file
+CTRL-A = Beginning of line
+CTRL-E = End of line
+CTRL-C = Show line number
+CTRL-_ = Go to line number
+
+Search File
+CTRL-W = Find
+ALT-W = Find next
+CTRL-\ = Search and replace

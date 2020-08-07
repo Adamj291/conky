@@ -1,0 +1,5 @@
+"env"$ = Show Environment Variables
+"echo $NAME" = Output value of "$NAME" variable
+"$PATH" = Executable search path
+"$HOME" = Home directory
+"$SHELL" = Current shell

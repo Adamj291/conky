@@ -1,8 +1,6 @@
 sleep 20s
 killall conky
 cd "/home/adam/.conky"
-conky -c "/home/adam/.conky/check_conky" &
-cd "/home/adam/.conky"
 conky -c "/home/adam/.conky/shortcuts_conky" &
 cd "/home/adam/.conky"
 conky -c "/home/adam/.conky/systemstats" &

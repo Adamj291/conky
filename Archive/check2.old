@@ -1,0 +1,58 @@
+#! /bin/bash
+# Refresh Pacman package update db.
+pm_cmd() {
+	pacman -Syy
+}
+
+# Variables.
+yay=`yay -Qu -p | wc -l` # Checks aur and arch repository for updates, and counts the lines.
+ign=`pacman -Qu | grep "ignored" | wc -l` # Checks arch repository and counts the lines for ignored packages.
+pac=`pacman -Qu | wc -l` # Checks arch repository and counts the lines all avaliable packages.
+aur=`expr $pac - $ign` # Takes the count from ignored packages from all arch updates, these will be suitable to install
+aur2=`expr $yay - $aur` # Takes avaliable updates away from initial aur check to show which updates are from the aur and avaliable.
+
+# Greps local version line and renmoves the number via sed and set the variables.
+kernel_l=`pacman -Q --info linux | grep Version  |  sed 's/Version         ://g'`
+headers_l=`pacman -Q --info linux-headers | grep Version  |  sed 's/Version         ://g'`
+nvidia_l=`pacman -Q --info nvidia | grep Version  |  sed 's/Version         ://g'`
+cinnamon_l=`pacman -Q --info cinnamon | grep Version  |  sed 's/Version         ://g'`
+
+# Greps remote version line and renmoves the number via sed and set the variables.
+kernel_r=`pacman -Si --info linux | grep Version  |  sed 's/Version         ://g'`
+headers_r=`pacman -Si --info linux-headers | grep Version  |  sed 's/Version         ://g'`
+nvidia_r=`pacman -Si --info nvidia | grep Version  |  sed 's/Version         ://g'`
+cinnamon_r=`pacman -Si --info cinnamon | grep Version  |  sed 's/Version         ://g'`
+
+kernup=$(if [ $kernel_l = $kernel_r ]; then echo "Up to date"; else echo "Update avaliable"; fi) # Compares local to remote versions, applys correct string to variable
+headup=$(if [ $headers_l = $headers_r ]; then echo "Up to date"; else echo "Update avaliable"; fi) # Compares local to remote versions, applys correct string to variable
+nvidup=$(if [ $nvidia_l = $nvidia_r ]; then echo "Up to date"; else echo "Update avaliable"; fi) # Compares local to remote versions, applys correct string to variable
+cinnup=$(if [ $cinnamon_l = $cinnamon_r ]; then echo "Up to date"; else echo "Update avaliable"; fi) # Compares local to remote versions, applys correct string to variable
+
+# displays local version numbers from the above variables, next to relevant string.
+printf "\nInstalled Versions\n" && 
+printf "Kernel: $kernel_l\n" && 
+printf "Headers: $headers_l\n" && 
+printf "Nvidia: $nvidia_l\n" && 
+printf "Cinnamon: $cinnamon_l\n" && 
+printf "\nRepository Versions\n" && 
+
+# displays remote version numbers from the above variables, next to relevant string.
+printf "Kernel: $kernel_r - $kernup\n" && 
+printf "Headers: $headers_r - $headup\n" && 
+printf "Nvidia: $nvidia_r - $nvidup\n" && 
+printf "Cinnamon: $cinnamon_r - $cinnup\n" && 
+ 
+# Works out total avaliable packages, takes away and ignored and avaliable packages from user repository.
+printf "\nTotal Arch Updates: " && printf "$pac" &&
+printf "\nIgnored Updates: " && printf "$ign" &&
+printf "\nAvaliable Arch Updates: " && printf "$aur" &&
+printf "\nAUR Updates: " && printf "$aur2"
+
+# SETUP NOTES
+# Add to sudoers file via visudo
+# includedir /etc/sudoers.d
+# <username> ALL=(ALL) NOPASSWD:/home/<username>/.conky/check.sh
+
+# Add to crontab -e
+# */15 * * * * /home/adam/.conky/check.sh > /home/adam/.conky/updates.txt 2>&1
+

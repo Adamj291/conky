@@ -1,0 +1,39 @@
+#! /bin/bash
+
+# Variables.
+yay=`yay -Qu -p | wc -l` # Checks aur and arch repository for updates, and counts the lines.
+ign=`pacman -Qu | grep "ignored" | wc -l` # Checks arch repository and counts the lines for ignored packages.
+pac=`pacman -Qu | wc -l` # Checks arch repository and counts the lines all avaliable packages.
+aur=`expr $pac - $ign` # Takes the count from ignored packages from all arch updates, these will be suitable to install
+aur2=`expr $yay - $aur` # Takes avaliable updates away from initial aur check to show which updates are from the aur and avaliable.
+
+# Refresh Pacman package update db.
+pm_cmd() {
+	no | pacman -Syyu
+}
+
+# Pulls and filters local version info of selected packages.
+printf "\nInstalled Versions\n" && 
+printf "Kernel: " && pacman -Q --info linux | grep Version  |  sed 's/Version         ://g' && 
+printf "Headers: " && pacman -Q --info linux-headers | grep Version  |  sed 's/Version         ://g' &&
+printf "Nvidia: " && pacman -Q --info nvidia | grep Version  |  sed 's/Version         ://g' &&
+printf "Cinnamon: " && pacman -Q --info cinnamon | grep Version  |  sed 's/Version         ://g' &&
+printf "\nRepository Versions\n" && 
+
+# Pulls and filters remote version info of selected packages.
+printf "Kernel: " && pacman -Si --info linux | grep Version  |  sed 's/Version         ://g' && 
+printf "Headers: " && pacman -Si --info linux-headers | grep Version  |  sed 's/Version         ://g' &&
+printf "Nvidia: " && pacman -Si --info nvidia | grep Version  |  sed 's/Version         ://g' &&
+printf "Cinnamon: " && pacman -Si --info cinnamon | grep Version  |  sed 's/Version         ://g' &&
+ 
+# Works out total avaliable packages, takes away and ignored and avaliable packages from user repository.
+printf "\nTotal Arch Updates: " && printf "$pac" &&
+printf "\nIgnored Updates: " && printf "$ign" &&
+printf "\nAvaliable Arch Updates: " && printf "$aur" &&
+printf "\nAur Updates: " && printf "$aur2"
+
+# SETUP NOTES
+# Add to sudoers file via visudo
+# includedir /etc/sudoers.d
+# <username> ALL=(ALL) NOPASSWD:/home/<username>/.conky/check.sh
+

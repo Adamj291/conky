@@ -1,0 +1,17 @@
+Compress a file or directory
+
+Example: tar -czvf arcive.tar.gz /path/to/file/or/dir/
+
+-c = Create an archive.
+-z = Compress the archive with gzip.
+-v = Verbose output.
+-f = Allows you to specify the filename of the archive.
+
+Extract an Archive
+
+Example: tar -xvzf arcive.tar.gz /path/to/file/or/dir/
+
+f = must be the last flag followed by tar file.
+z = tells tar to decompress the archive using gzip
+x = tar can collect files or extract them. x does the latter.
+v = Verbose output.
