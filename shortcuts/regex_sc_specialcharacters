@@ -1,0 +1,7 @@
+\n = New line
+\r = Carriage return
+\t = Tab
+\v = Vertical tab
+\f = Form feed
+\xxx = Octal character xxx
+\xhh = Hex character hh

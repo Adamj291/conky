@@ -1,0 +1,8 @@
+^ = Start of string, or start of line in multi-line pattern
+\A = Start of string
+$ = End of string, or end of line in multi-line pattern
+\Z = End of string
+\b = Word boundary
+\B = Not word boundary
+\< = Start of word
+\> = End of word

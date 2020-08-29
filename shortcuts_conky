@@ -15,7 +15,7 @@ conky.config = {
     own_window_class = 'conky',
     own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
     double_buffer = true,
-    minimum_width = 600,
+    minimum_width = 500,
     maximum_width = 600,
     draw_shades = false,
     draw_outline = false,
@@ -24,9 +24,9 @@ conky.config = {
     default_color = 'CDE0E7',
     default_shade_color = 'black',
     default_outline_color = 'green',
-    gap_x = 440,
-    gap_y = 660,
-    alignment = 'top_left',
+    gap_x = 540,
+    gap_y = 340,
+    alignment = 'top_right',
     no_buffers = true,
     uppercase = false,
     cpu_avg_samples = 2,
@@ -36,7 +36,7 @@ conky.config = {
 }
 
 conky.text = [[
-${font Sans:style=Bold:size=8}${color white}Shortcuts ${hr 2}$color
+${font Sans:style=Bold:size=8}${color white}OTHER SHORTCUTS ${hr 2}$color
 ${font Sans:style=Bold:size=6}${color white}Bash Variables ${hr 1}$color
 
 ${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/bash_sc}

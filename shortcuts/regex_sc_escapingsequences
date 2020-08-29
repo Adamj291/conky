@@ -1,0 +1,3 @@
+\ = Escape following character
+\Q = Begin literal sequence
+\E = End literal sequence

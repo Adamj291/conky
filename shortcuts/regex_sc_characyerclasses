@@ -1,0 +1,9 @@
+\c = Control character
+\s = White space
+\S = Not white space
+\d = Digit
+\D = Not digit
+\w = Word
+\W = Not word
+\x = Hexade­cimal digit
+\O = Octal digit

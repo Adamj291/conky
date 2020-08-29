@@ -1,0 +1,80 @@
+-- Copyright (C) 2007-2018 Zoltan Puskas
+-- License: BSD 3-clause
+
+conky.config = {
+    background = false,
+    font = 'Sans:size=6',
+    use_xft = true,
+    xftalpha = 0.9,
+    update_interval = 10000,
+    total_run_times = 0,
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_transparent = true,
+    own_window_class = 'conky',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    double_buffer = true,
+    minimum_width = 500,
+    maximum_width = 600,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    default_color = 'CDE0E7',
+    default_shade_color = 'black',
+    default_outline_color = 'green',
+    gap_x = 20,
+    gap_y = 120,
+    alignment = 'top_right',
+    no_buffers = true,
+    uppercase = false,
+    cpu_avg_samples = 2,
+    override_utf8_locale = true,
+    uppercase = true,
+    text_buffer_size = 1024
+}
+
+conky.text = [[
+${font Sans:style=Bold:size=8}${color white}REGEX Shortcuts ${hr 2}$color
+${font Sans:style=Bold:size=6}${color white}Anchors ${hr 1}$color
+
+${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_anchors}
+
+${font Sans:style=Bold:size=6}${color white}Character Classes ${hr 1}$color
+
+${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_characyerclasses}
+
+${font Sans:style=Bold:size=6}${color white}POSIX ${hr 1}$color
+
+${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_posix}
+
+${font Sans:style=Bold:size=6}${color white}Assertions ${hr 1}$color
+
+${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_assertions}
+
+${font Mono:style=Bold:size=6}${color white}Quantifiers ${hr 1}$color
+
+${font Mono:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_quanti­fiers}
+
+${font Sans:style=Bold:size=6}${color white}Escape Sequences ${hr 1}$color
+
+${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_escapingsequences}
+
+${font Sans:style=Bold:size=6}${color white}Common Metacharacters ${hr 1}$color
+
+${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_metacharacters}
+
+${font Sans:style=Bold:size=6}${color white}Special Metacharacters ${hr 1}$color
+
+${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_specialcharacters}
+
+${font Sans:style=Bold:size=6}${color white}Groups and Ranges ${hr 1}$color
+
+${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_groupsandranges}
+
+${font Sans:style=Bold:size=6}${color white}Pattern Modifiers ${hr 1}$color
+
+${font Sans:style=Regular:size=6}${color white}${cat ./shortcuts/regex_sc_patternmodifiers}
+
+]]

@@ -3,3 +3,10 @@
 "$PATH" = Executable search path
 "$HOME" = Home directory
 "$SHELL" = Current shell
+"$BASH" = Path to bash binary
+"$BASHPID" - Current Bash PID
+"$BASH_VERSION" = Current Bash Version
+"$?" = Exit status of last command
+"$OLDPWD" = Previous Working Directory
+"$PWD" = Present Working Directory
+"$RANDOM" = random integer between 0 and 32767

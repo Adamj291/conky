@@ -1,0 +1,8 @@
+?= = Lookahead assertion
+?! = Negative lookahead
+?<= = Lookbehind assertion
+?!= or ?<! = Negative lookbehind
+?> = Once-only Subexp­ression
+?() = Condition [if then]
+?()| = Condition [if then else]
+?# = Comment
