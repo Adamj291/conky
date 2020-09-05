@@ -134,13 +134,13 @@ Upload speed: ${upspeed enp34s0}
 ${upspeedgraph enp34s0}
 Total ${totaldown enp34s0} ${alignr}Total ${totalup enp34s0}
 
-${font Sans:style=Bold:size=6}Wlan0: ${addr enp34s0}
+${font Sans:style=Bold:size=6}Wlan0: ${addr wlan0}
 
-${font Sans:style=Regular:size=6}Signal: ${alignr}${wireless_link_qual enp34s0}%
-Download speed: ${downspeed enp34s0}
-${downspeedgraph enp34s0} 
-Upload speed: ${upspeed enp34s0}
-${upspeedgraph enp34s0}
-Total ${totaldown enp34s0} ${alignr}Total ${totalup enp34s0}
+${font Sans:style=Regular:size=6}Signal: ${alignr}${wireless_link_qual wlan0}%
+Download speed: ${downspeed wlan0}
+${downspeedgraph wlan0} 
+Upload speed: ${upspeed wlan0}
+${upspeedgraph wlan0}
+Total ${totaldown wlan0} ${alignr}Total ${totalup wlan0}
 
 ]]
